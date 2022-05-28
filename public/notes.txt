@@ -1,0 +1,25 @@
+install tailwind https://tailwindcss.com/docs/guides/create-react-app 
+install axios
+install react-router-dom
+Create mock api using https://mockapi.io/
+Create two tailwind components - Navbar and ProductCard
+Setup Router links.
+Wrap the <App/> with browserrouter.
+create a async await function to fetch data from Api.
+create 2 states(1 to display products after fetching from API and other to display "loading.." when waiting for data from API)
+call the fetchData function from useEffect
+
+useState:
+
+const [state,setState] = useState("")
+
+useEffect(() => {
+
+},[state])
+
+useReducer [state,dispatch] = useReducer(reducer,initialValue)
+
+reducer()
+
+useContext
+router

@@ -6,10 +6,10 @@ const CartContext = ({ children }) => {
   const initialValue = [];
   const reducer = (state, action) => {
     switch (action.type) {
-      case "Add": {
+      case "ADD": {
         return [...state, action.payload];
       }
-      case "Remove": {
+      case "REMOVE": {
         const filteredCart = state.filter(({ id }) => {
           return id != action.id;
         });
@@ -21,16 +21,12 @@ const CartContext = ({ children }) => {
   };
   const [cart, dispatch] = useReducer(reducer, initialValue);
   const addProduct = (product) => {
-    dispatch({ type: "Add", payload: product });
-    console.log(product);
+    dispatch({ type: "ADD", payload: product });
   };
 
   const removeProduct = (productID) => {
-    dispatch({ type: "Remove", id: productID });
-    console.log(productID);
+    dispatch({ type: "REMOVE", id: productID });
   };
-
-  console.log(cart);
 
   return (
     <CartProvider.Provider value={{ addProduct, removeProduct, cart }}>

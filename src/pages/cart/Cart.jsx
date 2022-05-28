@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
-import Card from "../component/Card";
-import Navbar from "../component/Navbar";
-import { CartProvider } from "../utils/CartContext";
+import Card from "../../components/Card";
+
+import { CartProvider } from "../../utils/CartContext";
 
 const Cart = () => {
   const { cart, removeProduct } = useContext(CartProvider);
-  const handleremoveClick = ({ id }) => {
-    removeProduct(id);
-  };
   return (
-    <>
-      <Navbar />
+    <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       {cart.length ? (
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {cart.map((product) => (
             <Card
               key={product.id}
@@ -21,15 +17,15 @@ const Cart = () => {
               description={product.description}
               image={product.image}
               price={product.price}
-              btn="Remove Product"
-              handleFunction={handleremoveClick}
+              buttonName="Remove Product"
+              action={({ id }) => removeProduct(id)}
             />
           ))}
         </div>
       ) : (
-        <h1>Cart is empty</h1>
+        <h1 className="text-2xl text-center"> Cart is Empty...</h1>
       )}
-    </>
+    </div>
   );
 };
 
